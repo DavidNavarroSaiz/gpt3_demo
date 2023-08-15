@@ -11,7 +11,7 @@ app = FastAPI()
 
 class UserInput(BaseModel):
     user_input: str
-
+# API to extract information of a user input
 @app.post("/extract-information/")
 async def extract_information(user_input: UserInput):
     # Set your OpenAI API key
