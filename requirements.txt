@@ -4,3 +4,7 @@ black
 numpy
 bard
 python-dotenv
+fastapi
+pydantic
+openai
+dotenv
