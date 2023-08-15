@@ -5,6 +5,7 @@ const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
+// example about how to use gpt to extract info 
 const user_input = "I'm John Smith, and I live at 123 Main St, New York. I'm 25 years old, and you can reach me at john@example.com. My goal with this program is to improve my coding skills.";
 
 async function runCompletion () {
