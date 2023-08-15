@@ -8,8 +8,11 @@ load_dotenv()
 
 app = FastAPI()
 
+
 class UserInput(BaseModel):
     user_input: str
+
+
 # API to extract information of a user input
 @app.post("/extract-information/")
 async def extract_information(user_input: UserInput):
@@ -20,11 +23,17 @@ async def extract_information(user_input: UserInput):
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "You are a helpful assistant that extracts information."},
-            {"role": "user", "content": f"Extract the following information in JSON format:\nName, Location, Address, Age, Areas of interest, Goals.\nIf any data is missing, set it as None.\n\n{user_input.user_input}"}
-        ]
+            {
+                "role": "system",
+                "content": "You are a helpful assistant that extracts information.",
+            },
+            {
+                "role": "user",
+                "content": f"Extract the following information in JSON format:\nName, Location, Address, Age, Areas of interest, Goals.\nIf any data is missing, set it as None.\n\n{user_input.user_input}",
+            },
+        ],
     )
 
     # Extract the assistant's reply from the response
-    chatgpt_output = response['choices'][0]['message']['content']
+    chatgpt_output = response["choices"][0]["message"]["content"]
     return {"assistant_reply": chatgpt_output}

@@ -12,13 +12,19 @@ user_input = "I'm John Smith, and I live at 123 Main St, New York. I'm 25 years 
 # Create a conversation using ChatGPT
 response = openai.ChatCompletion.create(
     model="gpt-3.5-turbo",
-     messages=[
-        {"role": "system", "content": "You are a helpful assistant that extracts information."},
-        {"role": "user", "content": f"Extract the following information in JSON format:\nName, Location, Address, Age, Areas of interest, Goals.\nIf any data is missing, set it as None.\n\n{user_input}"}
-    ]
+    messages=[
+        {
+            "role": "system",
+            "content": "You are a helpful assistant that extracts information.",
+        },
+        {
+            "role": "user",
+            "content": f"Extract the following information in JSON format:\nName, Location, Address, Age, Areas of interest, Goals.\nIf any data is missing, set it as None.\n\n{user_input}",
+        },
+    ],
 )
 
 # Extract the assistant's reply from the response
-chatgpt_output = response['choices'][0]['message']['content']
+chatgpt_output = response["choices"][0]["message"]["content"]
 # Print the assistant's reply
 print(chatgpt_output)
