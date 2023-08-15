@@ -1,4 +1,3 @@
-import openai
 from dotenv import load_dotenv
 import os
 from extract_info_user import extract_data
